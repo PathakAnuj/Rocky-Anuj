@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Study Notes</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Header -->
+<div id="header">
+  <h1>Study Notes</h1>
+  <input type="text" id="searchBox" placeholder="Search topics..." onkeyup="filterMenu()">
+</div>
+
+<!-- Sidebar -->
+<div id="sidebar">
+  <ul id="menu">
+    <li onclick="toggleChild('selenium')"><span>Selenium</span>
+      <ul id="selenium" class="child">
+        <li onclick="showContent('./study-notes/topics/selenium/launch-browser', this)">Launch Browser</li>
+        <li onclick="showContent('./study-notes/topics/selenium/locators', this)">Locators</li>
+        <li onclick="showContent('./study-notes/topics/selenium/xpath', this)">XPath</li>
+        <li onclick="showContent('./study-notes/topics/selenium/waits', this)">Waits</li>
+        <li onclick="showContent('./study-notes/topics/selenium/alerts', this)">Alerts</li>
+      </ul>
+    </li>
+    <li onclick="toggleChild('java')"><span>Java</span>
+      <ul id="java" class="child">
+        <li onclick="showContent('study-notes/java/oop', this)">OOP Basics</li>
+        <li onclick="showContent('study-notes/java/collections', this)">Collections</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<!-- Content -->
+<div id="content">
+  <h1>Welcome</h1>
+  <p>Click a topic from the left menu to view content here.</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
