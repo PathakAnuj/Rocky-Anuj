@@ -1,7 +1,80 @@
-<h2>Launch Browser</h2>
-<p>Open a browser using Selenium WebDriver:</p>
+<h2>Launching Different Browsers in Selenium</h2>
+
+<p>In Selenium WebDriver, you can launch multiple types of browsers using their respective driver classes. Below are the commonly used browsers:</p>
+
+<hr>
+
+<h3>1. Chrome Browser</h3>
+<p>Use <code>ChromeDriver</code> to launch Google Chrome.</p>
 <pre>
 WebDriver driver = new ChromeDriver();
 driver.get("https://www.google.com");
+driver.manage().window().maximize();
 driver.quit();
 </pre>
+
+<hr>
+
+<h3>2. Firefox Browser</h3>
+<p>Use <code>FirefoxDriver</code> to launch Mozilla Firefox.</p>
+<pre>
+WebDriver driver = new FirefoxDriver();
+driver.get("https://www.mozilla.org");
+driver.manage().window().maximize();
+driver.quit();
+</pre>
+
+<hr>
+
+<h3>3. Microsoft Edge</h3>
+<p>Use <code>EdgeDriver</code> to launch Microsoft Edge.</p>
+<pre>
+WebDriver driver = new EdgeDriver();
+driver.get("https://www.microsoft.com");
+driver.manage().window().maximize();
+driver.quit();
+</pre>
+
+<hr>
+
+<h3>4. Internet Explorer</h3>
+<p>Use <code>InternetExplorerDriver</code> to launch Internet Explorer.</p>
+<pre>
+WebDriver driver = new InternetExplorerDriver();
+driver.get("https://www.microsoft.com");
+driver.manage().window().maximize();
+driver.quit();
+</pre>
+
+<hr>
+
+<h3>5. Browser Options</h3>
+<p>You can also customize browser settings using Options class.</p>
+
+<h4>Chrome Example with Options:</h4>
+<pre>
+ChromeOptions options = new ChromeOptions();
+options.addArguments("--incognito");
+options.addArguments("--start-maximized");
+WebDriver driver = new ChromeDriver(options);
+driver.get("https://www.google.com");
+driver.quit();
+</pre>
+
+<h4>Firefox Example with Options:</h4>
+<pre>
+FirefoxOptions options = new FirefoxOptions();
+options.setHeadless(true); // run without UI
+WebDriver driver = new FirefoxDriver(options);
+driver.get("https://www.mozilla.org");
+driver.quit();
+</pre>
+
+<hr>
+
+<p><strong>Notes:</strong></p>
+<ul>
+  <li>Ensure the respective driver executable (chromedriver, geckodriver, msedgedriver, IEDriverServer) is available in your system PATH.</li>
+  <li>Use <code>driver.manage().window().maximize()</code> to open browser in full screen.</li>
+  <li>Headless mode allows running browsers without opening a UI window (useful for CI/CD).</li>
+</ul>

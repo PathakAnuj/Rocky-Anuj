@@ -1,10 +1,5 @@
 let activeItem = null;
 
-function toggleChild(id) {
-  const child = document.getElementById(id);
-  child.style.display = (child.style.display === 'block') ? 'none' : 'block';
-}
-
 function showContent(file, element) {
   // Highlight active item
   if(activeItem) activeItem.classList.remove('active');
@@ -35,16 +30,24 @@ function copyCode(btn) {
   });
 }
 
-// Search menu
+// Search menu with auto-load
 function filterMenu() {
   const filter = document.getElementById('searchBox').value.toLowerCase();
   const items = document.querySelectorAll('#menu li.child li');
+  let firstMatch = null;
+
   items.forEach(li => {
     if(li.innerText.toLowerCase().includes(filter)) {
       li.style.display = '';
-      li.parentElement.style.display = 'block'; // show parent
+      li.parentElement.style.display = 'block'; // ensure parent is visible
+      if(!firstMatch) firstMatch = li; // store first match
     } else {
       li.style.display = 'none';
     }
   });
+
+  // Automatically open first matching topic
+  if(firstMatch) {
+    showContent(firstMatch.getAttribute('onclick').match(/'(.+?)'/)[1], firstMatch);
+  }
 }
